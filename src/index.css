@@ -1,0 +1,116 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 15% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 15% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 15% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 270 90% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 180 70% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 330 90% 60%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 25%;
+    --input: 240 5% 16%;
+    --ring: 270 90% 60%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-dark text-foreground;
+    background-image: 
+      linear-gradient(to bottom, rgba(26, 31, 44, 0.8), rgba(26, 31, 44, 0.9)),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239b87f5' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+
+@layer components {
+  .cyber-button {
+    @apply relative px-8 py-3 bg-transparent overflow-hidden border-2 border-cyber-pink 
+    text-cyber-pink font-bold transition-all duration-200 
+    hover:shadow-[0_0_15px_rgba(217,70,239,0.8)] 
+    active:scale-95 before:content-[''] before:absolute before:bottom-0 before:left-0
+    before:w-full before:h-1 before:bg-cyber-pink before:scale-x-0 hover:before:scale-x-100
+    before:transition-transform before:origin-left;
+  }
+  
+  .terminal-text {
+    @apply font-mono text-cyber-green;
+  }
+  
+  .meme-card {
+    @apply relative bg-cyber-darkgray rounded-lg overflow-hidden shadow-lg
+    border border-transparent hover:border-cyber-pink transition-all duration-300
+    hover:shadow-[0_0_20px_rgba(217,70,239,0.4)];
+  }
+  
+  .glitch-text {
+    @apply relative inline-block text-cyber-pink;
+  }
+  
+  .glitch-text::before,
+  .glitch-text::after {
+    @apply content-[attr(data-text)] absolute top-0 left-0 w-full h-full;
+  }
+  
+  .glitch-text::before {
+    @apply text-cyber-blue left-[2px] animate-glitch;
+    clip: rect(44px, 450px, 56px, 0);
+  }
+  
+  .glitch-text::after {
+    @apply text-cyber-green left-[-2px] animate-glitch;
+    clip: rect(24px, 450px, 36px, 0);
+    animation-duration: 0.5s;
+    animation-delay: 0.1s;
+  }
+  
+  .neon-glow {
+    @apply relative;
+    box-shadow: 0 0 5px #1EAEDB, 0 0 10px #1EAEDB, 0 0 20px #1EAEDB;
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+  .terminal {
+    @apply overflow-hidden border border-cyber-green rounded bg-black/80 p-4 font-mono text-cyber-green;
+  }
+  
+  .terminal-output {
+    @apply whitespace-nowrap overflow-hidden border-r-4 border-cyber-green animate-terminal-typing;
+  }
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow: 0 0 5px #1EAEDB, 0 0 10px #1EAEDB, 0 0 20px #1EAEDB;
+  }
+  20%, 24%, 55% {
+    box-shadow: none;
+  }
+}
