@@ -44,6 +44,3 @@ npm run dev
 - `/src/hooks` - Custom React hooks
 - `/src/pages` - Page components
 
-## License
-
-MIT License - See LICENSE for details
